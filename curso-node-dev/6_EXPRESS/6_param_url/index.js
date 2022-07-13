@@ -5,19 +5,14 @@ const port = 3000;
 const path = require("path");
 const basePath = path.join(__dirname, "templates");
 
-const checkAuth = function (req, res, next) {
-  req.authStatus = false;
+app.get("/users/:id", (req, res) => {
+  const id = req.params.id;
 
-  if (req.authStatus) {
-    console.log("Está logado, pode continuar");
-    next();
-  } else {
-    console.log("Não está logado, faça login para continuar");
-    next();
-  }
-};
+  // leitura da tabela users, resgatar um usuário do banco
+  console.log(`Estamos buscando pelo usuário ${id}`);
 
-app.use(checkAuth);
+  res.sendFile(`${basePath}/users.html`);
+});
 
 app.get("/", (req, res) => {
   res.sendFile(`${basePath}/index.html`);
