@@ -1,2 +1,4 @@
 node_modules
+node_modules/
+/node_modules/
 curso_node-official
